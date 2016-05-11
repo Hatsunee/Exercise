@@ -1,0 +1,21 @@
+@(value:String, myForm: Form[Application.MyForm])
+
+@main("Sample Forms") {
+
+	<h1>Hello, Forms!</h1>
+
+	<p>@value</p>
+
+	@helper.form(action = routes.Application.send) {
+	    @helper.inputText(myForm("name"),args='_label->"あなたの名前",'_help->"必須")
+		@helper.inputPassword(myForm("password"),args='_label->"パスワード", '_help->"パスワードを入力して下さい")
+		@helper.checkbox(myForm("check"))
+		@helper.inputRadioGroup(myForm("radio"),options = helper.options(("windows","MS-Windows"),("mac","Mac OS X"),("linux","Linux")))
+		@helper.select(myForm("select"),options = helper.options(("jp","日本"),("us","アメリカ"),("uk","イギリス")),args='size->3)
+		@helper.textarea(myForm("textarea"), args='rows->3 ,'cols -> 30,'_label->"area")
+		@helper.inputDate(myForm("date"))
+	    @helper.inputText(myForm("num"), args='type->"number", '_label->"inputNum", 'max->100, 'min->10, '_help->"※最小値10, 最大値100")
+	    <input type="submit">
+	}
+
+}

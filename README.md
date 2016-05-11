@@ -1,4 +1,0 @@
-# Exercise
-aaaaaa
-test
-aaaaaa
