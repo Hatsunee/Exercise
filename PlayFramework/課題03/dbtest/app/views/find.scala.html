@@ -1,0 +1,23 @@
+@(header: String, myForm: Form[String], datas:List[Message])
+
+@main(header) {
+
+<div class="container">
+	<h1>@header</h1>
+		<a class="btn btn-default" href="/" role="button">一覧に戻る</a>
+		<a class="btn btn-default" href="/add" role="button">新規</a>
+		<a class="btn btn-default" href="/item" role="button">投稿編集</a>
+		<a class="btn btn-default" href="/delete" role="button">削除</a>
+	<hr>
+	<p>投稿の検索</p>
+	@helper.form(action = routes.Application.find) {
+	    @helper.inputText(myForm("input"), args='_label->"input", '_help->"This field is required")
+		<input type="submit">
+	}
+	<hr/>
+	@if(!datas.isEmpty) {
+	  <pre-wrap>@datas</pre-wrap>
+	}
+</div>
+
+}
